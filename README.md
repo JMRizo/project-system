@@ -1,6 +1,8 @@
 # project-system
 Projects, Assignments, and games made through java
 
+
+NOTE: Code was ran through NetBeans
 This repository will hold any projects, assignments and games that I've made through java that
 aren't big enough in scale to hold their own repository
 
