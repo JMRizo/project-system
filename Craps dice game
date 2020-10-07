@@ -1,7 +1,7 @@
 /**
  * @author joshuarizo
  */
-public class Assignment1 {
+public class crapsGame {
     public static void main(String[] args) {
         craps();
     }
