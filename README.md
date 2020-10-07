@@ -1,5 +1,5 @@
 # project-system
-Projects, assignments and games made through java
+Projects, Assignments, and games made through java
 
 This repository will hold any projects, assignments and games that I've made through java that
 aren't big enough in scale to hold their own repository
