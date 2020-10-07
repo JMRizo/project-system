@@ -1,1 +1,98 @@
-Test
+/**
+ * @author joshuarizo
+ */
+public class Assignment1 {
+    public static void main(String[] args) {
+        craps();
+    }
+    /**
+     * craps is designed to play craps 100000 times. it will show the first
+     * @param dice1 & dice2 are both die used for the game
+     * @param dice is both dice added together
+     * @param lossCount & winCount hold the amount of wins and losses
+     * @param round holds the round number
+     * @param roll holds how many times the game has been rolled for the round
+     * @param point holds the point number that must be hit in order to win post round 1
+     */
+    public static void craps(){
+        int dice;  // both dice together
+        int dice1; // first dice
+        int dice2; // second dice
+        int lossCount = 0; // amount of losses total
+        int winCount = 0; // amount of wins total
+        for (int round = 1; round <= 100000; round ++){ //run game 100000 times
+            if (round <= 10){ //keeps track of the first 10 rounds of the game
+                int roll = 1; // How many times in the round the game has rolled
+                dice1 = (int)(6 * Math.random() + 1); // determine 1st die 
+                dice2 = (int)(6 * Math.random() + 1); // determine 2nd die 
+                dice = dice1 + dice2; // adds both die together
+                int point = dice; // sets the point to the number acquired
+                System.out.println("Round " + round + "   Roll 1 -- Die1: " + 
+                        dice1 + " , Die2: " + dice2 + " -- Total: " + dice);
+                //the above prints information regarding the round, roll, die, and point
+                if (dice == 2 || dice == 3 || dice == 12) { //instaloss reqs
+                    lossCount++;  
+                    System.out.println("LOSS!");
+                } else if (dice == 7 || dice == 11) { //instawin reqs
+                    winCount++;
+                    System.out.println("WIN!");
+                } else {
+                    dice = 0; // dice is set to 0 so rolls can continue
+                    System.out.println("Point is " + point);
+                    while (point != dice) { // if no insta, keep rolling
+                        roll++; //add to roll count for display later
+                        dice1 = (int)(6 * Math.random() + 1);
+                        dice2 = (int)(6 * Math.random() + 1);
+                        dice = dice1 + dice2;
+                        System.out.println("Round " + round + "   Roll " + roll + " -- Die1: " + 
+                        dice1 + " , Die2: " + dice2 + " -- Total: " + dice);
+                        if (dice == point) { //win condition
+                            winCount++;
+                            System.out.println("WIN!");
+                            break;  // break out of loop, a win
+                        }
+                        if (dice == 7) { //loss condition
+                            lossCount++;
+                            System.out.println("LOSS!");
+                            break;  // break out of loop, a loss
+                        }
+
+                    }
+                }
+                System.out.println("");// these souts show wins and losses
+                System.out.println(winCount + " win(s) , " + lossCount + " loss(es)");
+                System.out.println("");
+            } else { //a repeat of the above but without showing results
+                dice1 = (int)(6 * Math.random() + 1);
+                dice2 = (int)(6 * Math.random() + 1);
+                dice = dice1 + dice2;
+                int point = dice;
+                if (dice == 2 || dice == 3 || dice == 12) {
+                    lossCount++;  
+                } else if (dice == 7 || dice == 11) {
+                    winCount++; 
+                } else { 
+                    dice = 0;
+                    while (dice != point) {
+                        dice1 = (int)(6 * Math.random() + 1);
+                        dice2 = (int)(6 * Math.random() + 1);
+                        dice = dice1 + dice2;
+                        if (dice == point) {
+                            winCount++;
+                            break;
+                        }
+                        if (dice == 7) {
+                            lossCount++;
+                            break;
+                        }
+                    }                      
+                }
+            }
+        }
+        //the end of it all, shows the final win and loss results
+        System.out.println("");
+        System.out.println("OVERALL:");
+        System.out.println(winCount + " win(s) , " + lossCount + " loss(es)");
+        System.out.println("");
+    }
+}
